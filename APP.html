@@ -146,7 +146,7 @@
         padding: 20px;
       }
 
-      .chat-message {
+      .chat-message { 
         margin-bottom: 20px;
       }
 
@@ -175,12 +175,12 @@
       
       <div class="chat-container">            
         <div class="chat-input-container">
-            <form action="/" method="post"></form>
-                <input type="text" name="user_input" class="chat-input"  autofocus  placeholder="Type a message..." >
-                <div class="chat-actions">
-                    <label for="image-upload" class="image-upload-button">🔗</label>
-<input type="file" id="image-upload" name="image" style="display: none;">
-<button class="chat-button" type="submit">➤</button>
+            <form action="/ask" method="post" enctype="multipart/form-data">
+              <input type="file" id="image-upload" name="image" style="display: none;"  accept="image/*">
+              <input type="text" name="question" class="chat-input"  autofocus  placeholder="Type a message..." >
+              <div class="chat-actions">
+                  <label for="image-upload" class="image-upload-button">🔗</label>                 
+                  <button class="chat-button" type="submit">➤</button>
                 </div>
             </form>
         </div>
