@@ -53,10 +53,10 @@ def ask():
             
         )
 
-        # Return the response as a JSON object
-        return jsonify(res['message']['content'])
+        # Render the response.html template with the response
+        return render_template("response.html", response=res['message']['content'])
     except Exception as e:
-        return jsonify({'error': str(e)})
+        return render_template("error.html", error=str(e))
 
 if __name__ == "__main__":
     app.run(debug=True)
