@@ -15,9 +15,17 @@
       
       <div class="chat-container"> 
         <div class="chat-output-container">
-          <!-- This will display the conversation history -->
-          <div class="chat-output">       
-            <p>{{ response }}</p>    
+          <div class="chat-output">
+            <div class="question">
+              {% if image_url %}
+                <img src="{{ image_url }}" alt="Uploaded image" class="question-image">
+              {% endif %}
+              <h3>{{ question }}</h3>
+            </div>
+            <div class="answer">
+              <h4>{{ response }}</h4>
+            </div>
+                       
           </div>
         </div>           
         <div class="chat-input-container">

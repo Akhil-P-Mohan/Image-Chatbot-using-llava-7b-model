@@ -7,7 +7,7 @@
   
   body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #eeeeee17;
+    background-color: #eaedf11f;
   }
   
   /* Header Styles */
@@ -68,30 +68,83 @@
   .chat-output-container {
     display: flex;
     justify-content: space-between;
-    width: 70%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    width: 50%;
     border: none;
     border-radius: 5px;
-    padding: 20%;
+    height: 500px;
     transition: box-shadow 0.4s ease-in-out;
     margin-bottom: 2%;
   }
+
+  .chat-output {
+    flex-grow: 1;
+    padding: 25px;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    display: flex; /* add this property */
+    flex-direction: column; /* add this property */
+  }
   
-  .chat-input-container:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.235);
+  .question {
+    display: flex; /* add this property */
+    flex-direction: row; /* add this property */
+    align-items: center; /* add this property */
+    text-align: left;
+    width: 100%; 
+    margin-bottom: 20px; 
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    border-bottom-style: dashed;
+  }
+  
+  .question-image {
+    max-width: 300px;
+    height: auto;
+    margin: 10px;
+    margin-right: 20px; /* add some space between the image and the question */
+  }
+  
+  .question h3 {
+    flex-grow: 1; /* add this property to make the h3 element take up the remaining space */
+    margin: 0; /* remove any default margin */
+    padding: 0; /* remove any default padding */
+  }
+
+  .answer {
+    text-align: left;
+    width: 100%; 
+  }
+
+  h3 {
+    color: #000000;   
+    font-weight:600;
+    text-transform: capitalize;
+    font-size: 15px;
+    
+  }
+
+  h4 {
+    color: #000000;   
+    font-weight:400;
+    font-size: 15px;
   }
   
   .chat-input-container {
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 50%;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 4px;
     transition: box-shadow 0.4s ease-in-out;
+  }
+
+  .chat-input-container:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.235);
   }
   
   .chat-input {
@@ -159,7 +212,6 @@
   .chat-input:focus {
     background-color: #fff;
     border: none;
-    box-shadow: 0 0 5px rgba(220, 230, 240, 0.824);
   }
   
   .chat-messages {

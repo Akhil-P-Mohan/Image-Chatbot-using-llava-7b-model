@@ -5,6 +5,7 @@ from PIL import Image
 import ollama
 import os
 from werkzeug.utils import secure_filename
+from flask import url_for
 
 app = Flask(__name__)
 
@@ -31,18 +32,21 @@ def ask():
                     'content': question,
                     'images': [image_path]
                 }
+                image_url = url_for('static', filename='images/' + filename)
             else:
                 question = request.form["question"]
                 message = {
                     'role': 'user',
                     'content': question
                 }
+                image_url = None
         else:
             question = request.form["question"]
             message = {
                 'role': 'user',
                 'content': question
             }
+            image_url = None
 
         
 
@@ -53,10 +57,11 @@ def ask():
             
         )
 
-        # Render the response.html template with the response
-        return render_template("response.html", response=res['message']['content'])
+        # Render the response.html template with the response and image
+        return render_template("response.html", question=question, response=res['message']['content'], image_url=image_url)
     except Exception as e:
         return render_template("error.html", error=str(e))
 
 if __name__ == "__main__":
     app.run(debug=True)
+
