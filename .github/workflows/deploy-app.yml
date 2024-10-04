@@ -19,5 +19,4 @@ jobs:
 
       - name: Run app
         run: |
-          chmod +x startup.sh
-          ./startup.sh
+          python app.py
