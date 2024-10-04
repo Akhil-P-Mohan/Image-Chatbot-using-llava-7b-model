@@ -1,4 +1,5 @@
 # app.py
+#imagechatbot
 
 from flask import Flask, request, render_template, send_file, jsonify
 from PIL import Image
@@ -26,7 +27,7 @@ def ask():
             if filename:  # Check if filename is not empty
                 image_path = os.path.join("static", "images", filename)
                 image_file.save(image_path)
-                question = ""
+                question = request.form["question"]
                 message = {
                     'role': 'user',
                     'content': question,

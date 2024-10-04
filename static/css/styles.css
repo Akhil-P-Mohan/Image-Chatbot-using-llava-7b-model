@@ -89,8 +89,8 @@
   
   .question {
     display: flex; /* add this property */
-    flex-direction: row; /* add this property */
-    align-items: center; /* add this property */
+    flex-direction: column; /* add this property */
+    align-items: flex-start; /* add this property */
     text-align: left;
     width: 100%; 
     margin-bottom: 20px; 
@@ -103,7 +103,8 @@
     max-width: 300px;
     height: auto;
     margin: 10px;
-    margin-right: 20px; /* add some space between the image and the question */
+    margin-bottom: 20px; /* add some space between the image and the question */
+    
   }
   
   .question h3 {

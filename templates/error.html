@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Error</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <title>imagechatbot.ai</title>
   </head>
   <body>
+    <header>
+      <h1>IMAGE CHATBOT</h1>
+    </header>
+     
     <main>
-      <div class="chat-header">
-        <h2>Error</h2>
-        <div class="chat-subheader">
-          <h2>Something went wrong!</h2>
-        </div>
-      </div>
+      
       <div class="chat-container"> 
         <div class="chat-output-container">
-          <!-- This will display the error message -->
-          <div class="chat-output" id="chat-output">           
-            <p>{{ error }}</p>
+          <div class="chat-output">
+            <div class="question">
+              {% if image_url %}
+                <img src="{{ image_url }}" alt="Uploaded image" class="question-image">
+              {% endif %}
+              
+              <h3>{{ question }}</h3>
+            </div>
+            <div class="answer">
+              <h3>Something went wrong !</h3>
+              <h4>Try again with another input...</h4>
+            </div>
+                       
           </div>
         </div>           
+        <div class="chat-input-container">
+          <div class="chat-input">
+            <form id="myForm" action="/ask" method="post" enctype="multipart/form-data">
+              <input type="file" id="image-upload" name="image" style="display: none;"  accept="image/*">
+              <input type="text" name="question" class="chat-input"  autofocus  placeholder="Type a message..." >
+              
+            </form>
+          </div>
+          <div class="chat-actions">
+            <label for="image-upload" form="myForm" class="image-upload-button tooltip image-upload-tooltip">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip size-4">
+                <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+              </svg>
+              <span class="tooltiptext">Upload an image</span>
+            </label>
+            <button form="myForm" class="chat-button tooltip chat-button-tooltip" type="submit">
+              <span aria-hidden="true">➤</span>
+              <span class="tooltiptext">Send message</span>
+            </button>
+          </div>
+        </div>   
       </div>
     </main>
+    <script src="../static/js/script.js"></script>
+
   </body>
 </html>
