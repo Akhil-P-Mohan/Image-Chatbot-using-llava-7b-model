@@ -25,8 +25,9 @@
       </div>
 
       <div class="chat-container"> 
-                   
+                
         <div class="chat-input-container">
+          <div id="image-preview" class="image-preview"></div> 
           <div class="chat-input">
             <form id="myForm" action="/ask" method="post" enctype="multipart/form-data">
               <input type="file" id="image-upload" name="image" style="display: none;"  accept="image/*">
@@ -47,10 +48,27 @@
             </button>
           </div>
         </div> 
+       
         <h6>akhilpmohan &copy; </h6>  
       </div>
     </main>
-  
+    <script>
+      function showImagePreview(event) {
+        const imagePreview = document.getElementById('image-preview');
+        imagePreview.innerHTML = ""; // Clear previous preview
+        
+        const file = event.target.files[0];
+        if (file) {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.alt = "Uploaded Image Preview";
+          img.classList.add('preview-image'); // Apply CSS for styling
+          imagePreview.appendChild(img);
+        }
+      }
+      document.getElementById('image-upload').addEventListener('change', showImagePreview);
+
+    </script>
   
   </body>
 </html>

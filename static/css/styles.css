@@ -310,5 +310,16 @@ h6{
   
 }
 
+.image-preview {
+  padding: 5px;
+  display: flex;
 
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 60px; /* Adjust this as needed */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(6, 57, 83, 0.801);
+}
 
