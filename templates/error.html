@@ -10,9 +10,9 @@
     <header>
       <h1>IMAGE CHATBOT</h1>
       <div class="side-header">
-        <a href="index.html"><button class="side-header1">new chat</button></a>
-        <a href="imagedescription.html"><button class="side-header1">image description</button></a>
-        <a href="texttoimage.html"><button class="side-header1">text to image</button></a>
+        <a href="/"><button class="side-header1">new chat</button></a>
+        <a href="/imagedescription"><button class="side-header1">image description</button></a>
+        <a href="/texttoimage"><button class="side-header1">text to image</button></a>
       </div>
     </header>
      
@@ -36,6 +36,7 @@
           </div>
         </div>           
         <div class="chat-input-container">
+          <div id="image-preview" class="image-preview"></div>
           <div class="chat-input">
             <form id="myForm" action="/ask" method="post" enctype="multipart/form-data">
               <input type="file" id="image-upload" name="image" style="display: none;"  accept="image/*">

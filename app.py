@@ -10,6 +10,16 @@ from flask import url_for
 
 app = Flask(__name__)
 
+
+@app.route("/imagedescription")
+def image_description():
+    return render_template("imagedescription.html")
+
+@app.route("/texttoimage")
+def text_to_image():
+    return render_template("texttoimage.html")
+
+
 # Define a route for the home page
 @app.route("/")
 def index():
