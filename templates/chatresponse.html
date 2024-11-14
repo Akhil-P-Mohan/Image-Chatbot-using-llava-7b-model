@@ -4,49 +4,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
-    <title>ImageChatbot.ai</title>
+    <title>imagechatbot.ai</title>
   </head>
   <body>
     <header>
       <h1>IMAGE CHATBOT</h1>
       <div class="side-header">
-        <a href="/"><button class="side-header1">New Chat</button></a>
+        <a href="/newchat"><button class="side-header1">New Chat</button></a>
         <a href="/imagedescription"><button class="side-header1">Image Description</button></a>
         <a href="/texttoimage"><button class="side-header1">Image Generation</button></a>
       </div>
     </header>
-
+     
     <main>
-      <div class="chat-header">
-        <h2>Text to Image!</h2>
-        <div class="chat-subheader">
-          <h2>Transforming Your Words into Visuals Instantly....</h2>
-        </div>
-      </div>
-
-      <div class="chat-container">
+      
+      <div class="chat-container"> 
+        <div class="chat-output-container" id="chatOutput">
+            {% for msg in messages %}
+          <div class="chat-output" >
+            <div class="question">
+              
+              <h3>{{ msg.question }}</h3>
+            </div>
+            <div class="answer">
+              <h4>{{ msg.response }}</h4>
+            </div>
+                       
+          </div>
+          {% endfor %}
+        </div>           
         <div class="chat-input-container">
-          <!-- This div will hold the generated image once it is returned -->
-          <div id="generated-image" class="generated-image"></div>
 
           <div class="chat-input">
-            <!-- Form to submit text prompt for image generation -->
-            <form id="myForm" action="/generate_image" method="post">
-              <input type="text" name="prompt" class="chat-input" autofocus placeholder="Describe the image you want..." required>
+            <form id="myForm" action="/chat" method="post" enctype="multipart/form-data">
+              
+              <input type="text" name="question" class="chat-input"  autofocus  placeholder="Type a message..." >
+              
             </form>
           </div>
           <div class="chat-actions">
+            
             <button form="myForm" class="chat-button tooltip chat-button-tooltip" type="submit">
               <span aria-hidden="true">➤</span>
-              <span class="tooltiptext">Generate Image</span>
+              <span class="tooltiptext">Send message</span>
             </button>
           </div>
-        </div> 
-
-        <h6>akhilpmohan &copy; </h6>  
+        </div>   
+        <h6>akhilpmohan &copy; </h6>
       </div>
     </main>
-
     <script src="../static/js/script.js"></script>
+
   </body>
 </html>

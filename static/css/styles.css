@@ -115,11 +115,19 @@ h2 {
 
 .chat-output-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 55%;
   height: 700px;
+  overflow-y: auto;
   transition: box-shadow 0.4s ease-in-out;
   margin-bottom: 2%;
+  flex-direction: column;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.chat-output-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
 
 .chat-output {
@@ -129,6 +137,7 @@ h2 {
   width: 100%;
   display: flex; 
   flex-direction: column; 
+  gap: 10px;
 }
 
 .question {
@@ -140,7 +149,7 @@ h2 {
   padding-bottom: 35px;
   border-bottom: 1px solid #0000009f;
   border-bottom-style: dashed;
-  margin-bottom: 40px; 
+  margin-bottom: 20px; 
 }
 
 .question-image {
@@ -156,6 +165,7 @@ h2 {
   align-items: flex-start;
   text-align: left;
   width: 100%;  
+  padding-top: 10px;
 }
 
 h3 {

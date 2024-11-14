@@ -1,24 +1,14 @@
-from flask import Flask, request, render_template, send_file, jsonify, url_for
+from flask import Flask, request, render_template, url_for
 from PIL import Image
-import ollama  # Assuming Ollama is used for both chat and image generation
+import ollama  # Import the Llama library (replace with the actual import if different)
 import os
 from werkzeug.utils import secure_filename
-import requests
 import time
-from diffusers import StableDiffusionGLIGENPipeline
-import torch
-from transformers import AutoTokenizer
-from diffusers.utils import load_image
-
+import io
 
 app = Flask(__name__)
 
-# Load the GLIGEN model and tokenizer once at startup
 
-pipe = StableDiffusionGLIGENPipeline.from_pretrained(
-    "masterful/gligen-1-4-generation-text-box", variant="fp16", torch_dtype=torch.float16
-)
-pipe = pipe.to("cuda")
 
 # Route to render the image description page
 @app.route("/imagedescription")
@@ -55,71 +45,55 @@ def ask():
                 image_url = url_for('static', filename='images/' + filename)
             else:
                 question = request.form["question"]
-                message = {
-                    'role': 'user',
-                    'content': question
-                }
+                message = {'role': 'user', 'content': question}
                 image_url = None
         else:
             question = request.form["question"]
-            message = {
-                'role': 'user',
-                'content': question
-            }
+            message = {'role': 'user', 'content': question}
             image_url = None
 
-        # Use the Ollama model (or another model) for image description
+        # Use Llama 3.2:3b for image description
         res = ollama.chat(
-            model="llava:7b",  # or another relevant model for image descriptions
-            messages=[message]
-        )
+            model="llava:7b",
+            messages=[message])
 
         return render_template("response.html", question=question, response=res['message']['content'], image_url=image_url)
 
     except Exception as e:
-        return render_template("error.html", error=str(e))
+        return render_template("error.html", error=str(e),question=question,image_url=image_url)
 
 
 # Route for generating an image from text
 @app.route("/generate_image", methods=["POST"])
 def generate_image():
     try:
-        # Get the text prompt, phrases, and bounding boxes from the form
+        # Get the text prompt from the form
         prompt = request.form["prompt"]
-        
-        # Parse phrases and bounding boxes from the form (example input format)
-        #phrases = request.form.getlist("phrases")  # e.g., ["a waterfall", "a high speed train"]
-        
-        #boxes = request.form.getlist("boxes")  # Example input format: "x1,y1,x2,y2"
-        #boxes = [[0.1, 0.2, 0.4, 0.5]]
 
-        
-        # Convert boxes to the expected format
-        #boxes = [list(map(float, box.split(','))) for box in boxes]  # Convert string to list of floats
+        # Generate an image using the ollama library
+        # Assuming ollama has a method for image generation
+        response = ollama.generate_image(
+            model="llava:7b",
+            prompt=prompt)
 
-        # Generate an image using GLIGEN with bounding boxes and phrases
-        with torch.no_grad():
-            images = pipe(
-                prompt=prompt,
-                #gligen_phrases=phrases,
-               #gligen_boxes=boxes,
-                #gligen_scheduled_sampling_beta=1,
-                output_type="pil",
-                num_inference_steps=50,
-            ).images
+        # Check if the response contains an image
+        if 'image' in response:
+            image_data = response['image']
+            # Convert the image data to a PIL Image
+            image = Image.open(io.BytesIO(image_data))
 
-        # Save the generated image
-        filename = f"{secure_filename(prompt)}_{str(int(time.time()))}.png"
-        image_path = os.path.join("static", "generated_images", filename)
-        images[0].save(image_path)
+            # Save the generated image
+            filename = f"{secure_filename(prompt)}_{str(int(time.time()))}.png"
+            image_path = os.path.join("static", "generated_images", filename)
+            image.save(image_path)
 
-        image_url = url_for('static', filename=f'generated_images/{filename}')
-        return render_template("response.html", question=prompt, image_url=image_url)
+            image_url = url_for('static', filename=f'generated_images/{filename}')
+            return render_template("response.html", question=prompt, image_url=image_url)
+        else:
+            return render_template("error.html", error="Image generation failed.",question=prompt)
 
     except Exception as e:
-        return render_template("error.html", error=str(e))
-
-
+        return render_template("error.html", error=str(e),question=prompt)
 
 
 if __name__ == "__main__":
