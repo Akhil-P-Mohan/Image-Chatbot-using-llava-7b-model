@@ -35,7 +35,7 @@ def text_to_image():
 # Define a route for the home page
 @app.route("/")
 def index():
-    return render_template("chat.html")
+    return render_template("home.html")
 
 # Define a route for handling questions(image description)
 @app.route("/imgdes", methods=["POST"])
