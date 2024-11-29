@@ -1,16 +1,29 @@
 # app.py
 #imagechatbot
 
-from flask import Flask, request, render_template, send_file, jsonify,session
+from flask import Flask, request, render_template, send_file, jsonify, session, url_for
 from PIL import Image
 import ollama
 import os
 from werkzeug.utils import secure_filename
-from flask import url_for
+import pygame
+import time
+from gtts import gTTS
+import tempfile
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Generates a random 24-byte string
 
+def txt_to_speech(text):
+    with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as temp_audio:
+        tts = gTTS(text=text, lang='en')
+        temp_audio_path = temp_audio.name
+        tts.save(temp_audio_path)
+    pygame.mixer.init()
+    pygame.mixer.music.load(temp_audio_path)
+    pygame.mixer.music.play()
+    print(f"Temporary audio file saved at {temp_audio_path}")
 
 
 @app.route("/newchat")
@@ -88,6 +101,9 @@ def imgdes():
             
         }
 
+        text = res['message']['content']
+        txt_to_speech(text)
+
         # Initialize the messages list in the session if it doesn't exist
         if 'messages' not in session:
             session['messages'] = []
@@ -108,6 +124,11 @@ def imgdes():
             'response': str(e)
         }
         
+
+        text = str(e)
+        txt_to_speech(text)
+
+
         # Initialize the messages list in the session if it doesn't exist
         if 'messages' not in session:
             session['messages'] = []
@@ -123,7 +144,9 @@ def imgdes():
 # Define a route for handling questions (chatting)
 @app.route("/chat", methods=["POST"])
 def chat():
+    
     try:
+        
         question = request.form["question"]
         message = {
             'role': 'user',
@@ -142,6 +165,11 @@ def chat():
             'response': res['message']['content']
         }
 
+          
+        text = res['message']['content']
+        txt_to_speech(text)
+        
+
         # Initialize the messages list in the session if it doesn't exist
         if 'messages' not in session:
             session['messages'] = []
@@ -159,6 +187,11 @@ def chat():
             'question': question,
             'response': str(e)
         }
+
+          
+        text = str(e)
+        txt_to_speech(text)
+        
         
         # Initialize the messages list in the session if it doesn't exist
         if 'messages' not in session:
@@ -171,6 +204,7 @@ def chat():
         # Render the response.html template with the error message
         return render_template("chatresponse.html", messages=session['messages'])
     
+
 
 if __name__ == "__main__":
     app.run(debug=True)
