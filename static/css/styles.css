@@ -335,7 +335,7 @@ h6{
 
 .home{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .home-header{
