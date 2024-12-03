@@ -209,7 +209,6 @@ main {
 /* Home */
 
 .home-side-header{
-  
     position: absolute;
     right: 10px;
 }
@@ -230,26 +229,6 @@ main {
     flex-direction: column;
     align-items: center;
     margin-top: 10%;
-}
-
-@keyframes typing {
-    from {
-        width: 0; /* Start with no width */
-        
-    }
-    to {
-        width: 100%; /* Expand to full width */
-        
-    }
-}
-  
-@keyframes fadeIn {
-    from {
-        opacity: 0; /* Start fully transparent */
-    }
-    to {
-        opacity: 1; /* End fully visible */
-    }
 }
 
 .home{
@@ -305,25 +284,30 @@ h2 {
     font-size: 20px;
 }
 
+.heading h2{
+    font-size: 50px;
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides the text until revealed */
+    width: 0; 
+    animation: typing 2s steps(30, end) forwards, fadeIn 0.5s forwards; /* Typing and fade-in effects */
+}
+
+@keyframes typing {
+    from {
+        width: 0; /* Start with no width */
+        
+    }
+    to {
+        width: 100%; /* Expand to full width */
+        
+    }
+}
+
 h3 {
     color: #000000;   
     font-weight:600;
     text-transform: capitalize;
     font-size: 15px;
-}
-
-h4 {
-    color: #000000;   
-    font-weight:400;
-    font-size: 15px;
-}
-
-h6{
-    position: absolute;
-    bottom: 1%;
-    font-size: 13px;
-    font-weight: 100;
-    color: #ffffffaf;
 }
 
 .home-header h3{
@@ -335,18 +319,15 @@ h6{
     transition: color 0.3s ease;
 }
 
+h4 {
+    color: #000000;   
+    font-weight:400;
+    font-size: 15px;
+}
+
 .home-header h4{
     width: 400px;
     margin-bottom: 20px;
-}
-
-.heading h2{
-    font-size: 50px;
-    
-      white-space: nowrap; /* Prevents text wrapping */
-      overflow: hidden; /* Hides the text until revealed */
-      width: 0; 
-      animation: typing 2s steps(30, end) forwards, fadeIn 0.5s forwards; /* Typing and fade-in effects */
 }
 
 .heading h5{
@@ -359,6 +340,22 @@ h6{
     animation-delay: 2s; /* Delay to show after h2 */
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        opacity: 1; /* End fully visible */
+    }
+}
+
+h6{
+    position: absolute;
+    bottom: 1%;
+    font-size: 13px;
+    font-weight: 100;
+    color: #ffffffaf;
+}
 
 
 /* Hover */
