@@ -18,15 +18,11 @@ body {
 
 /* Header Styles */
 header {
-  background-image: url('');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Montserrat', sans-serif;  
+  font-family: 'Oswald', sans-serif;  
   color: #000000;
   padding: 20px;
   margin: 10px;
- border-radius: 10px;
+  border-radius: 10px;
  
 }
 
@@ -35,8 +31,6 @@ h1 {
   font-weight: 500;
   letter-spacing: -1px;
   font-stretch: 100%;
-  text-transform: uppercase;
-  text-shadow: 4px 2px 3px rgba(95, 93, 93, 0.493); 
   font-size: 20px;
 }
 
@@ -88,6 +82,7 @@ main {
 
 h2 {
   font-size: 35px;
+  font-family: "Libre Bodoni", serif;
 }
 
 .chat-subheader {
@@ -101,10 +96,9 @@ h2 {
 
 .chat-subheader h2 {
   padding-top: 2%;
-  font-style: italic;
-  font-family: 'Lobster', cursive;
+  font-family: 'Alegreya sans', sans-serif;
   font-weight: 100;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .chat-container {
@@ -401,7 +395,7 @@ h6{
     
 }
 .heading h5{
-  font-family:cursive;
+  font-family:'Alegreya sans', sans-serif;
   font-weight: 200;
   color: #ffffffd0;
   font-size: 20px;
@@ -437,4 +431,29 @@ h6{
 
 .link:hover{
   text-decoration: underline;
+}
+
+.home-side-header{
+  
+  position: absolute;
+  right: 10px;
+}
+
+.home-side-header1{
+  font-family: 'Montserrat', sans-serif;
+  color: #174c53;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: #cae0df;
+  
+}
+
+.home-side-header1:hover {
+  color: #ffffff;
+  background-color: #39747cfd;
+  
+  
 }
