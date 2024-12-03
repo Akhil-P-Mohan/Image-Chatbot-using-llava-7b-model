@@ -191,11 +191,12 @@ h4 {
   justify-content: space-between;
   width: 60%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.4s ease-in-out;
   background-color: #ffffff;
   border: none;
   border-radius: 5px;
   padding: 4px;
-  transition: box-shadow 0.4s ease-in-out;
+  
 }
 
 .chat-input-container:hover {
@@ -353,15 +354,30 @@ h6{
   width: 400px;
   height: 250px;
   border-radius: 10px;
+  margin: 50px;
+  transition:transform 0.3s ease;
+  
+}
+
+.home-header img:hover{
+  transform: scale(1.125);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.658);
+  
 }
 
 .home-header h3{
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   display: flex;
-  color: #c8ebf0;
+  color: #ffffff;
   font-size: 35px;
+  transition: color 0.3s ease;
 }
+
+ .home-header h3:hover{
+  color: #ffffff;
+  text-shadow:0 5px 10px #00000085;
+ }
 
 .home-header h4{
   width: 400px;
@@ -377,11 +393,48 @@ h6{
 
 .heading h2{
   font-size: 50px;
+  
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides the text until revealed */
+    width: 0; 
+    animation: typing 2s steps(30, end) forwards, fadeIn 0.5s forwards; /* Typing and fade-in effects */
+    
 }
 .heading h5{
   font-family:cursive;
   font-weight: 200;
   color: #ffffffd0;
   font-size: 20px;
+  opacity: 0; /* Start hidden */
+  animation: fadeIn 0.8s forwards; /* Animation for h5 */
+  animation-delay: 2s; /* Delay to show after h2 */
 }
 
+@keyframes typing {
+  from {
+      width: 0; /* Start with no width */
+      
+  }
+  to {
+      width: 100%; /* Expand to full width */
+      
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0; /* Start fully transparent */
+  }
+  to {
+      opacity: 1; /* End fully visible */
+  }
+}
+
+.link{
+  color: rgb(255, 255, 255);
+  text-decoration:none;
+}
+
+.link:hover{
+  text-decoration: underline;
+}
