@@ -5,25 +5,24 @@
   padding: 0;
 }
 
+/* Common */
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  /*background-color: #ffffff; */
-  background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-	width: 100vw;
+font-family: Arial, Helvetica, sans-serif;
+background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh;
+width: 100vw;
 }
 
-/* Header Styles */
 header {
-  font-family: 'Oswald', sans-serif;  
-  color: #000000;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
- 
+font-family: 'Oswald', sans-serif;  
+color: #000000;
+padding: 20px;
+margin: 10px;
+border-radius: 10px;
 }
 
 h1 {
@@ -59,7 +58,27 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.560);
 }
 
-/* Main Styles */
+.home-side-header{
+  position: absolute;
+  right: 10px;
+}
+
+.home-side-header1{
+  font-family: 'Montserrat', sans-serif;
+  color: #174c53;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: #cae0df;
+}
+
+.home-side-header1:hover {
+  color: #ffffff;
+  background-color: #39747cfd;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -70,7 +89,6 @@ main {
 }
 
 .chat-header {
-  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,24 +99,112 @@ main {
 }
 
 h2 {
-  font-size: 35px;
+  font-size: 50px;
   font-family: "Libre Bodoni", serif;
 }
 
 .chat-subheader {
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #000000ab;        
 }
 
-.chat-subheader h2 {
-  padding-top: 2%;
-  font-family: 'Alegreya sans', sans-serif;
+h5{
+  font-family:'Alegreya sans', sans-serif;
   font-weight: 100;
   font-size: 20px;
+}
+
+.heading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.heading h2{
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden; /* Hides the text until revealed */
+  width: 0; 
+  animation: typing 2s steps(30, end) forwards, fadeIn 0.5s forwards; /* Typing and fade-in effects */
+}
+
+@keyframes typing {
+  from {
+      width: 0; /* Start with no width */   
+  }
+  to {
+      width: 100%; /* Expand to full width */   
+  }
+}
+
+.heading h5{
+  color: #ffffffd0;
+  opacity: 0; /* Start hidden */
+  animation: fadeIn 0.8s forwards; /* Animation for h5 */
+  animation-delay: 2s; /* Delay to show after h2 */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0; /* Start fully transparent */
+  }
+  to {
+      opacity: 1; /* End fully visible */
+  }
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header{
+  display: flex;
+  margin-top: 30px;
+  padding: 80px;
+  flex-direction: column;
+  align-items: center; 
+}
+
+h4 {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  display: flex;
+  color: #ffffff;
+  font-size: 35px;
+  transition: color 0.3s ease;
+}
+
+h3 {
+  color: #000000;   
+  font-weight:400;
+  font-size: 15px;
+}
+
+.home-header h3{
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.home-header img{
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  margin: 50px;
+  transition:transform 0.3s ease;
+}
+
+.home-header img:hover{
+  transform: scale(1.125);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.658);
+}
+
+.link{
+  color: rgb(255, 255, 255);
+  text-decoration:none;
+}
+
+.link:hover{
+  text-decoration: underline;
 }
 
 .chat-container {
@@ -112,24 +218,17 @@ h2 {
 .chat-output-container {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   width: 55%;
   height: 700px;
   overflow-y: auto;
-  transition: box-shadow 0.4s ease-in-out;
   margin-bottom: 2%;
-  flex-direction: column;
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
 
-.chat-output-container::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
-}
-
 .chat-output {
-  
   padding: 25px;
-  font-size: 16px;
   width: 100%;
   display: flex; 
   flex-direction: column; 
@@ -148,11 +247,14 @@ h2 {
   margin-bottom: 20px; 
 }
 
+.question h3{
+  font-weight: 600;
+}
+
 .question-image {
   max-width: 300px;
   height: auto;
-  margin-bottom: 20px;
-  
+  margin-bottom: 20px;    
 }
 
 .answer {
@@ -164,42 +266,37 @@ h2 {
   padding-top: 10px;
 }
 
-h3 {
-  color: #000000;   
-  font-weight:600;
-  text-transform: capitalize;
-  font-size: 15px;
-  
-}
-
-h4 {
-  color: #000000;   
-  font-weight:400;
-  font-size: 15px;
-}
-
 .chat-input-container {
   position: absolute;
   bottom: 4%;
   display: flex;
   justify-content: space-between;
   width: 60%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.697);
   transition: box-shadow 0.4s ease-in-out;
   background-color: #ffffff;
-  border: none;
   border-radius: 5px;
   padding: 4px;
-  
 }
 
 .chat-input-container:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.235);
 }
 
+.image-preview {
+  padding: 5px;
+  display: flex;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 60px; /* Adjust this as needed */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(6, 57, 83, 0.801);
+}
+
 .chat-input {
   flex-grow: 1;
-  
   padding: 10px;
   font-size: 16px;
   width: 100%;
@@ -227,16 +324,16 @@ h4 {
   cursor: pointer;
 }
 
+.image-upload-button svg {
+  width: 17px;
+  height: 17px;
+}
+
 .image-upload-button:hover {
   color: #000000;
   background-color: #ffffff;
   border: 1px solid #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.560);
-}
-
-.image-upload-button svg {
-width: 17px;
-height: 17px;
 }
 
 .chat-button {
@@ -259,11 +356,6 @@ height: 17px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.560);
 }
 
-.chat-input:focus {
-  background-color: #fff;
-  border: none;
-}
-
 h6{
   position: absolute;
   bottom: 1%;
@@ -273,7 +365,9 @@ h6{
 }
 
 
-/* Add styles for tooltips */
+/* Tooltip */
+
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -281,7 +375,6 @@ h6{
 
 .tooltip .tooltiptext {
   visibility: hidden;
-
   background-color: #ffffff;
   border: #9b9999a5;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -314,146 +407,19 @@ h6{
 .image-upload-tooltip .tooltiptext {
   width: 120px; 
   margin-left: -60px;
-  
-}
-
-.image-preview {
-  padding: 5px;
-  display: flex;
-
-}
-
-.preview-image {
-  max-width: 100%;
-  max-height: 60px; /* Adjust this as needed */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(6, 57, 83, 0.801);
 }
 
 
-.home{
-  display: flex;
-  flex-direction: column;
+/* Scrollbar */
+
+.chat-output-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
 
-.home-header{
-  display: flex;
-  margin-top: 30px;
-  padding: 80px;
-  flex-direction: column;
-  align-items: center; 
-}
 
-.home-header img{
-  width: 400px;
-  height: 250px;
-  border-radius: 10px;
-  margin: 50px;
-  transition:transform 0.3s ease;
-  
-}
+/* Focus */
 
-.home-header img:hover{
-  transform: scale(1.125);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.658);
-  
-}
-
-.home-header h3{
-  padding-top: 20px;
-  padding-bottom: 30px;
-  display: flex;
-  color: #ffffff;
-  font-size: 35px;
-  transition: color 0.3s ease;
-}
-
- .home-header h3:hover{
-  color: #ffffff;
-  text-shadow:0 5px 10px #00000085;
- }
-
-.home-header h4{
-  width: 400px;
-  margin-bottom: 20px;
-}
-
-.heading{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10%;
-}
-
-.heading h2{
-  font-size: 50px;
-  
-    white-space: nowrap; /* Prevents text wrapping */
-    overflow: hidden; /* Hides the text until revealed */
-    width: 0; 
-    animation: typing 2s steps(30, end) forwards, fadeIn 0.5s forwards; /* Typing and fade-in effects */
-    
-}
-.heading h5{
-  font-family:'Alegreya sans', sans-serif;
-  font-weight: 200;
-  color: #ffffffd0;
-  font-size: 20px;
-  opacity: 0; /* Start hidden */
-  animation: fadeIn 0.8s forwards; /* Animation for h5 */
-  animation-delay: 2s; /* Delay to show after h2 */
-}
-
-@keyframes typing {
-  from {
-      width: 0; /* Start with no width */
-      
-  }
-  to {
-      width: 100%; /* Expand to full width */
-      
-  }
-}
-
-@keyframes fadeIn {
-  from {
-      opacity: 0; /* Start fully transparent */
-  }
-  to {
-      opacity: 1; /* End fully visible */
-  }
-}
-
-.link{
-  color: rgb(255, 255, 255);
-  text-decoration:none;
-}
-
-.link:hover{
-  text-decoration: underline;
-}
-
-.home-side-header{
-  
-  position: absolute;
-  right: 10px;
-}
-
-.home-side-header1{
-  font-family: 'Montserrat', sans-serif;
-  color: #174c53;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding: 8px;
+.chat-input:focus {
+  background-color: #fff;
   border: none;
-  border-radius: 10px;
-  background-color: #cae0df;
-  
-}
-
-.home-side-header1:hover {
-  color: #ffffff;
-  background-color: #39747cfd;
-  
-  
 }

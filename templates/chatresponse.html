@@ -7,8 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
     <title>imagechatbot.ai</title>
   </head>
-  <body>
-    
+  <body>   
     <header>
       <h1>IMAGE CHATBOT</h1>
       <div class="side-header">
@@ -17,45 +16,36 @@
         <a href="/"><button class="side-header1">Home</button></a>
       </div>
     </header>
-     
-    <main>
-      
+    <main>      
       <div class="chat-container"> 
         <div class="chat-output-container" id="chatOutput">
-            {% for msg in messages %}
+          {% for msg in messages %}
           <div class="chat-output" >
-            <div class="question">
-              
+            <div class="question">             
               <h3>{{ msg.question }}</h3>
             </div>
             <div class="answer">
-              <h4>{{ msg.response }}</h4>
-            </div>
-                       
+              <h3>{{ msg.response }}</h3>
+            </div>                       
           </div>
           {% endfor %}
-        </div>           
-        <div class="chat-input-container">
-          <div id="image-preview" class="image-preview"></div>
-          <div class="chat-input">
-            <form id="myForm" action="/chat" method="post" enctype="multipart/form-data">
-              
-              <input type="text" name="question" class="chat-input"  autofocus  placeholder="Type a message..." >
-              
-            </form>
-          </div>
-          <div class="chat-actions">
-            
-            <button form="myForm" class="chat-button tooltip chat-button-tooltip" type="submit">
-              <span aria-hidden="true">➤</span>
-              <span class="tooltiptext">Send message</span>
-            </button>
-          </div>
-        </div>   
-        <h6>akhilpmohan &copy; </h6>
-      </div>
+        </div>  
+      </div>         
+      <div class="chat-input-container">
+        <div class="chat-input">
+          <form id="myForm" action="/chat" method="post" enctype="multipart/form-data">              
+            <input type="text" name="question" class="chat-input"  autofocus  placeholder="Type a message..." >              
+          </form>
+        </div>
+        <div class="chat-actions">            
+          <button form="myForm" class="chat-button tooltip chat-button-tooltip" type="submit">
+            <span aria-hidden="true">➤</span>
+            <span class="tooltiptext">Send message</span>
+          </button>
+        </div>
+      </div>   
+      <h6>akhilpmohan &copy; </h6>     
     </main>
     <script src="../static/js/script.js"></script>
-
   </body>
 </html>
