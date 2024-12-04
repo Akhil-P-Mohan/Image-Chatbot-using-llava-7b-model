@@ -76,7 +76,8 @@ h1 {
 
 .home-side-header1:hover {
   color: #ffffff;
-  background-color: #39747cfd;
+  background-color: #6e92a35e;
+  box-shadow: 0 0 10px rgba(91, 158, 167, 0.455);
 }
 
 main {
